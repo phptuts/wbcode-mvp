@@ -26,6 +26,6 @@
   },
   "type": "module",
   "dependencies": {
-    "sveltestrap": "^5.9.0"
+    "firebase": "^9.7.0"
   }
 }

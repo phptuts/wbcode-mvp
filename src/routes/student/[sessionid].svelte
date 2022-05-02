@@ -1,18 +1,48 @@
 <script>
-	import { FormGroup, Input, Button } from 'sveltestrap/src';
+	import { collection, doc, getDoc, onSnapshot } from 'firebase/firestore';
+
+	import { getStores } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { initFirebase } from '../../firebase';
+	let firebaseSessionId;
+	let store = getStores();
+	store.page.subscribe((info) => {
+		firebaseSessionId = info.params['sessionid'];
+	});
+
+	let session = {
+		message: '',
+		url: ''
+	};
+
+	let sessionURL = '';
+
+	onMount(async () => {
+		const { db } = initFirebase();
+		const docRef = doc(db, 'sessions', firebaseSessionId);
+		const sessionDoc = await getDoc(docRef);
+		if (!sessionDoc.exists()) {
+			alert('Invalid Session Code Please go back');
+			return;
+		}
+
+		onSnapshot(docRef, (doc) => {
+			session = doc.data();
+		});
+	});
 </script>
 
 <div class="row">
 	<div class="col">
-		<h1>Link: <a href="http://www.google.com">Google</a></h1>
+		<h1>Link: <a href={session.url}>{session.url}</a></h1>
 	</div>
 </div>
 <div class="row">
 	<div class="col">
 		<h2>Message</h2>
-		<FormGroup>
-			<Input readonly type="textarea" rows={13} />
-		</FormGroup>
+		<div class="mb-3">
+			<textarea class="form-control" bind:value={session.message} rows="13" />
+		</div>
 	</div>
 </div>
 
