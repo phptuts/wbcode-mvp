@@ -1,22 +1,69 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { initFirebase } from '../firebase';
-	import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 
+	import {
+		getFirestore,
+		collection,
+		query,
+		where,
+		getDocs,
+		addDoc,
+		updateDoc
+	} from 'firebase/firestore';
+
+	function makeid(length) {
+		var result = '';
+		var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		var charactersLength = characters.length;
+		for (var i = 0; i < length; i++) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		}
+		return result;
+	}
+
+	let docRef;
+	let db;
+	let colRef;
 	let sessionCode;
 
 	async function goToTeachPage() {
-		await goto('teach');
+		const { db } = initFirebase();
+		const colRef = collection(db, 'sessions');
+		let exists = true;
+
+		let sessionCodeTeach;
+		while (exists) {
+			sessionCodeTeach = makeid(4);
+			const q = query(colRef, where('code', '==', sessionCodeTeach));
+			const querySnapshot = await getDocs(q);
+
+			exists = !querySnapshot.empty;
+		}
+
+		let newSession = {
+			message: '',
+			code: sessionCodeTeach,
+			is_active: true,
+			url: ''
+		};
+
+		docRef = await addDoc(colRef, newSession);
+		await goto(`teach/${docRef.id}`);
 	}
 
 	async function goToSessionPage() {
+		if (!sessionCode) {
+			alert('No session code');
+			return;
+		}
 		const { db } = initFirebase();
 		const colRef = collection(db, 'sessions');
 
 		const q = query(colRef, where('code', '==', sessionCode));
 		const querySnapshot = await getDocs(q);
 		if (querySnapshot.empty) {
-			alert('Invalid code.');
+			alert('Invalid session code.');
 			return;
 		}
 		let fbSessionId;
