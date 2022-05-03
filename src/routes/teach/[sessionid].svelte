@@ -34,11 +34,15 @@
 	async function submit() {
 		if (!docRef) return;
 
-		try {
-			const urlParse = new URL(session.url);
-		} catch (e) {
-			alert('Invalid url please enter https://');
-			return;
+		if (session.url) {
+			try {
+				const urlParse = new URL(session.url);
+			} catch (e) {
+				alert('Invalid url please enter https://');
+				return;
+			}
+		} else {
+			session.url = undefined;
 		}
 
 		try {
