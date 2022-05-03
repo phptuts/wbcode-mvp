@@ -69,7 +69,7 @@
 </div>
 <div class="row">
 	<div class="col">
-		<button type="button" on:click={submit} class="btn btn-primary">Primary</button>
+		<button type="button" on:click={submit} class="btn btn-primary w-100">Submit</button>
 	</div>
 </div>
 

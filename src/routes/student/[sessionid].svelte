@@ -4,18 +4,26 @@
 	import { getStores } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { initFirebase } from '../../firebase';
+
 	let firebaseSessionId;
 	let store = getStores();
-	store.page.subscribe((info) => {
-		firebaseSessionId = info.params['sessionid'];
-	});
-
+	let sessionURL = '';
+	let urlName;
 	let session = {
 		message: '',
 		url: ''
 	};
 
-	let sessionURL = '';
+	$: if (sessionURL) {
+		const urlParse = new URL(sessionURL);
+		urlName = urlParse.hostname.replace('www.', '');
+	} else {
+		urlName = '';
+	}
+
+	store.page.subscribe((info) => {
+		firebaseSessionId = info.params['sessionid'];
+	});
 
 	onMount(async () => {
 		const { db } = initFirebase();
@@ -28,13 +36,19 @@
 
 		onSnapshot(docRef, (doc) => {
 			session = doc.data();
+			sessionURL = session.url;
 		});
 	});
 </script>
 
 <div class="row">
 	<div class="col">
-		<h1>Link: <a href={session.url}>{session.url}</a></h1>
+		<h1>Student Session</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<h1>Link: <a target="_blank" href={session.url}>{urlName}</a></h1>
 	</div>
 </div>
 <div class="row">
