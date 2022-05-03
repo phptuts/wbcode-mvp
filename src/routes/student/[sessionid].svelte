@@ -55,7 +55,7 @@
 	<div class="col">
 		<h2>Message</h2>
 		<div class="mb-3">
-			<textarea class="form-control" bind:value={session.message} rows="13" />
+			<textarea class="form-control" bind:value={session.message} readonly rows="13" />
 		</div>
 	</div>
 </div>

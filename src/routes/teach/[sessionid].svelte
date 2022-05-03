@@ -15,14 +15,14 @@
 		url: ''
 	};
 
-	let sessionDoc;
+	let docRef;
 
 	onMount(async () => {
 		store.page.subscribe(async (info) => {
 			firebaseSessionId = info.params['sessionid'];
 			const { db } = initFirebase();
-			const docRef = doc(db, 'sessions', firebaseSessionId);
-			sessionDoc = await getDoc(docRef);
+			docRef = doc(db, 'sessions', firebaseSessionId);
+			const sessionDoc = await getDoc(docRef);
 			if (!sessionDoc.exists()) {
 				alert('Invalid Session Code Please go back');
 				return;
@@ -32,10 +32,10 @@
 	});
 
 	async function submit() {
-		if (!sessionDoc) return;
+		if (!docRef) return;
 
 		try {
-			await updateDoc(sessionDoc, session);
+			await updateDoc(docRef, session);
 		} catch (e) {
 			console.log(e);
 			alert('there was an error');
