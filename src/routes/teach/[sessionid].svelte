@@ -42,7 +42,7 @@
 				return;
 			}
 		} else {
-			session.url = undefined;
+			session.url = '';
 		}
 
 		try {

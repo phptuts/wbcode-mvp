@@ -14,7 +14,7 @@
 		url: ''
 	};
 
-	$: if (sessionURL) {
+	$: if (sessionURL && sessionURL != '') {
 		const urlParse = new URL(sessionURL);
 		urlName = urlParse.hostname.replace('www.', '');
 	} else {
