@@ -35,6 +35,13 @@
 		if (!docRef) return;
 
 		try {
+			const urlParse = new URL(session.url);
+		} catch (e) {
+			alert('Invalid url please enter https://');
+			return;
+		}
+
+		try {
 			await updateDoc(docRef, session);
 		} catch (e) {
 			console.log(e);
