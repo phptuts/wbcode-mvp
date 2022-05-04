@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import { initFirebase } from '../../firebase';
 
+	export let showActiveSession = false;
 	let firebaseSessionId;
 	let store = getStores();
 	let sessionURL = '';
@@ -41,6 +42,13 @@
 	});
 </script>
 
+{#if showActiveSession}
+	<div class="row">
+		<div class="col">
+			<h1>Session: {session.code}</h1>
+		</div>
+	</div>
+{/if}
 <div class="row">
 	<div class="col">
 		<h2>Link: <a target="_blank" href={session.url}>{urlName}</a></h2>
@@ -57,5 +65,8 @@
 <style>
 	h2 {
 		text-align: left;
+	}
+	h1 {
+		text-align: center;
 	}
 </style>

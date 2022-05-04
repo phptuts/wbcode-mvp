@@ -98,6 +98,7 @@
 <style>
 	h1 {
 		font-size: 100px;
+		text-align: center;
 	}
 	h2 {
 		text-align: left;

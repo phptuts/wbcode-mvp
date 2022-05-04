@@ -76,25 +76,35 @@
 
 <div class="row">
 	<div class="col">
-		<h1>Welcome to Whiteboard Coding</h1>
+		<h1>WB Code - Share links and messages on Chromebooks</h1>
 	</div>
 </div>
 <div class="row">
 	<div class="col">
-		<button type="button" on:click={goToTeachPage} class="center btn btn-primary"
-			>Create Teacher Session</button
+		<button type="button" on:click={goToTeachPage} class="center w-100 btn btn-primary"
+			>Create Session</button
 		>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col">
-		<h2>Student Code</h2>
+		<h2>Session Code</h2>
 		<div class="mb-3">
 			<input type="text" bind:value={sessionCode} placeholder="Enter Code" class="form-control" />
 		</div>
-		<button type="button" on:click={goToSessionPage} class=" center btn btn-primary"
-			>Go to Session</button
+		<button type="button" on:click={goToSessionPage} class="w-100 center btn btn-primary"
+			>Enter Session</button
 		>
 	</div>
 </div>
+
+<style>
+	h1 {
+		margin-bottom: 30px;
+		text-align: center;
+	}
+	h2 {
+		margin-top: 50px;
+	}
+</style>

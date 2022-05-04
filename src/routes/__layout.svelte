@@ -12,7 +12,7 @@
 	<slot />
 	<div class="row" id="footer">
 		<div class="col">
-			<p>Thank your trying out whiteboard coding!</p>
+			<p>Thank you for trying out WB Code!</p>
 		</div>
 	</div>
 </div>
