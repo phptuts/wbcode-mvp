@@ -56,6 +56,9 @@
 	}
 </script>
 
+<svelte:head>
+	<title>WB CODE - Instructor</title>
+</svelte:head>
 <div class="row">
 	<div class="col">
 		<h1>Code: {session.code}</h1>

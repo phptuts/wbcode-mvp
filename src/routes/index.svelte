@@ -74,6 +74,9 @@
 	}
 </script>
 
+<svelte:head>
+	<title>WB CODE - Home</title>
+</svelte:head>
 <div class="row">
 	<div class="col">
 		<h1>WB Code - Share links and messages on Chromebooks</h1>
