@@ -45,7 +45,7 @@
 {#if showActiveSession}
 	<div class="row">
 		<div class="col">
-			<h1>Session: {session.code}</h1>
+			<h1>Class: {session.code}</h1>
 		</div>
 	</div>
 {/if}

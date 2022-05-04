@@ -79,25 +79,38 @@
 </svelte:head>
 <div class="row">
 	<div class="col">
-		<h1>WB Code - Share links and messages on Chromebooks</h1>
+		<h1>Share links and message in your class!</h1>
 	</div>
 </div>
 <div class="row">
 	<div class="col">
-		<button type="button" on:click={goToTeachPage} class="center w-100 btn btn-primary"
-			>Create Session</button
-		>
+		<p>
+			WB Code allows you send messages and links to your class. Click the create class button to
+			create a class to get started.
+		</p>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col">
-		<h2>Session Code</h2>
-		<div class="mb-3">
-			<input type="text" bind:value={sessionCode} placeholder="Enter Code" class="form-control" />
-		</div>
-		<button type="button" on:click={goToSessionPage} class="w-100 center btn btn-primary"
-			>Enter Session</button
+		<button type="button" on:click={goToTeachPage} class="btn-lg center w-100 btn btn-success"
+			>Create Class</button
+		>
+	</div>
+</div>
+
+<div class="row mt-3">
+	<div class="col-6">
+		<input
+			type="text"
+			bind:value={sessionCode}
+			placeholder="Enter Code (4 characters)"
+			class="form-control"
+		/>
+	</div>
+	<div class="col-6">
+		<button type="button" on:click={goToSessionPage} class=" w-100  btn btn-primary"
+			>Join Class</button
 		>
 	</div>
 </div>
@@ -106,8 +119,5 @@
 	h1 {
 		margin-bottom: 30px;
 		text-align: center;
-	}
-	h2 {
-		margin-top: 50px;
 	}
 </style>

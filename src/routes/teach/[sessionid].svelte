@@ -57,7 +57,7 @@
 </script>
 
 <svelte:head>
-	<title>WB CODE - Instructor</title>
+	<title>WB CODE - Class</title>
 </svelte:head>
 <div class="row">
 	<div class="col">

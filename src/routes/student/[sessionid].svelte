@@ -3,6 +3,6 @@
 </script>
 
 <svelte:head>
-	<title>WB CODE - Session</title>
+	<title>WB CODE - Student</title>
 </svelte:head>
 <Student showActiveSession={true} />
