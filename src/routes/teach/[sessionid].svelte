@@ -1,4 +1,6 @@
 <script>
+	import Student from '$lib/components/Student.svelte';
+
 	import { initFirebase } from '../../firebase';
 
 	import { onMount } from 'svelte';
@@ -60,24 +62,36 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col">
-		<h2>Url</h2>
-		<div class="mb-3">
-			<input type="url" bind:value={session.url} class="form-control" />
+	<div class="col col-6" id="left">
+		<div class="row">
+			<div class="col">
+				<h2>Url</h2>
+				<div class="mb-3">
+					<input type="url" bind:value={session.url} class="form-control" />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Message</h2>
+				<div class="mb-3">
+					<textarea bind:value={session.message} class="form-control" rows="10" />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button type="button" on:click={submit} class="btn btn-primary w-100">Submit</button>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<h2>Message</h2>
-		<div class="mb-3">
-			<textarea bind:value={session.message} class="form-control" rows="10" />
+	<div class="col col-6" id="right">
+		<div class="row">
+			<div class="col">
+				<h2>Student Preview</h2>
+			</div>
 		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col">
-		<button type="button" on:click={submit} class="btn btn-primary w-100">Submit</button>
+		<Student />
 	</div>
 </div>
 
@@ -87,5 +101,8 @@
 	}
 	h2 {
 		text-align: left;
+	}
+	#right {
+		border-left: dotted 10px gray;
 	}
 </style>
