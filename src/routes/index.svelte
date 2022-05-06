@@ -114,10 +114,28 @@
 		>
 	</div>
 </div>
+<div class="row">
+	<div class="col">
+		<iframe
+			width="560"
+			height="315"
+			src="https://www.youtube.com/embed/kDqbSEkrsO8"
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen
+		/>
+	</div>
+</div>
 
 <style>
 	h1 {
 		margin-bottom: 30px;
 		text-align: center;
+	}
+	iframe {
+		display: block;
+		margin: 30px auto;
+		margin-bottom: 10px;
 	}
 </style>
