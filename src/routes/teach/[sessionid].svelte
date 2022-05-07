@@ -65,7 +65,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col col-6" id="left">
+	<div class="col col-md-6 col-sm-12" id="left">
 		<div class="row">
 			<div class="col">
 				<h2>Url</h2>
@@ -88,7 +88,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col col-6" id="right">
+
+	<div class="col col-6 d-none d-md-block" id="right">
 		<div class="row">
 			<div class="col">
 				<h2>Student Preview</h2>
@@ -108,5 +109,11 @@
 	}
 	#right {
 		border-left: dotted 10px gray;
+	}
+	@media (max-width: 700px) {
+		h1 {
+			font-size: 40px;
+			margin-top: 10px;
+		}
 	}
 </style>

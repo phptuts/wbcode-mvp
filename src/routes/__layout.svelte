@@ -1,8 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
+	import { getStores } from '$app/stores';
 
 	import { initFirebase } from '../firebase';
-
+	let isOpen = false;
+	const { page } = getStores();
+	function toggleMenu() {
+		isOpen = !isOpen;
+	}
 	onMount(() => {
 		initFirebase();
 	});
@@ -19,6 +24,7 @@
 		/> WB Code
 	</a>
 	<button
+		on:click={toggleMenu}
 		class="navbar-toggler"
 		type="button"
 		data-toggle="collapse"
@@ -29,16 +35,20 @@
 	>
 		<span class="navbar-toggler-icon" />
 	</button>
-	<div class="collapse navbar-collapse" id="navbarNav">
+	<div class="navbar-collapse" class:collapse={!isOpen} id="navbarNav">
 		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			<li class="nav-item">
+				<a class="nav-link" class:active={$page.url.pathname == '/'} href="/"
+					>Home <span class="sr-only">(current)</span></a
+				>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/about">About</a>
+				<a class="nav-link" class:active={$page.url.pathname == '/about'} href="/about">About</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/contact">Contact</a>
+				<a class="nav-link" class:active={$page.url.pathname == '/contact'} href="/contact"
+					>Contact</a
+				>
 			</li>
 		</ul>
 	</div>

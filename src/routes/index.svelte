@@ -101,12 +101,7 @@
 
 <div class="row mt-3">
 	<div class="col-6">
-		<input
-			type="text"
-			bind:value={sessionCode}
-			placeholder="Enter Code (4 characters)"
-			class="form-control"
-		/>
+		<input type="text" bind:value={sessionCode} placeholder="Enter Code" class="form-control" />
 	</div>
 	<div class="col-6">
 		<button type="button" on:click={goToSessionPage} class=" w-100  btn btn-primary"
@@ -137,5 +132,6 @@
 		display: block;
 		margin: 30px auto;
 		margin-bottom: 10px;
+		max-width: 100%;
 	}
 </style>
