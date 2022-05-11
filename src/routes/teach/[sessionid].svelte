@@ -7,7 +7,7 @@
 	import { getStores } from '$app/stores';
 
 	import { collection, addDoc, updateDoc, doc, getDoc } from 'firebase/firestore';
-	let store = getStores();
+	const { page } = getStores();
 	let firebaseSessionId;
 
 	let session = {
@@ -20,17 +20,14 @@
 	let docRef;
 
 	onMount(async () => {
-		store.page.subscribe(async (info) => {
-			firebaseSessionId = info.params['sessionid'];
-			const { db } = initFirebase();
-			docRef = doc(db, 'sessions', firebaseSessionId);
-			const sessionDoc = await getDoc(docRef);
-			if (!sessionDoc.exists()) {
-				alert('Invalid Session Code Please go back');
-				return;
-			}
-			session = sessionDoc.data();
-		});
+		firebaseSessionId = $page.params['sessionid'];
+		const { db } = initFirebase();
+		docRef = doc(db, 'sessions', firebaseSessionId);
+		const sessionDoc = await getDoc(docRef);
+		if (!sessionDoc.exists()) {
+			alert('Invalid Session Code Please go back');
+			return;
+		}
 	});
 
 	async function submit() {
