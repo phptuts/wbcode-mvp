@@ -61,7 +61,7 @@
 </svelte:head>
 <div class="row">
 	<div class="col">
-		<h1>Code: {session.code}</h1>
+		<h1 class="code">Code: {session.code}</h1>
 	</div>
 </div>
 <div class="row">
