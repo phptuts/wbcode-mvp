@@ -28,6 +28,7 @@
 			alert('Invalid Session Code Please go back');
 			return;
 		}
+		session.code = sessionDoc.data().code ?? 'Error';
 	});
 
 	async function submit() {
